@@ -13,6 +13,8 @@
 		606B425E242CEA4B0016360C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 606B425C242CEA4B0016360C /* Main.storyboard */; };
 		606B4260242CEA4C0016360C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 606B425F242CEA4C0016360C /* Assets.xcassets */; };
 		606B4263242CEA4C0016360C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 606B4261242CEA4C0016360C /* LaunchScreen.storyboard */; };
+		E80C38A8242E217400519C26 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80C38A7242E217300519C26 /* LoginViewController.swift */; };
+		E80C38AA242E296400519C26 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80C38A9242E296400519C26 /* SignupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		606B425F242CEA4C0016360C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		606B4262242CEA4C0016360C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		606B4264242CEA4C0016360C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E80C38A7242E217300519C26 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E80C38A9242E296400519C26 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				606B425F242CEA4C0016360C /* Assets.xcassets */,
 				606B4261242CEA4C0016360C /* LaunchScreen.storyboard */,
 				606B4264242CEA4C0016360C /* Info.plist */,
+				E80C38A7242E217300519C26 /* LoginViewController.swift */,
+				E80C38A9242E296400519C26 /* SignupViewController.swift */,
 			);
 			path = "Eindopdracht-IOS";
 			sourceTree = "<group>";
@@ -138,7 +144,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E80C38A8242E217400519C26 /* LoginViewController.swift in Sources */,
 				606B425B242CEA4B0016360C /* DetailViewController.swift in Sources */,
+				E80C38AA242E296400519C26 /* SignupViewController.swift in Sources */,
 				606B4259242CEA4B0016360C /* MasterViewController.swift in Sources */,
 				606B4257242CEA4B0016360C /* AppDelegate.swift in Sources */,
 			);
