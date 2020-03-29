@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet var email: UITextField!
-    @IBOutlet var password: UITextField!
+    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var error: UILabel!
     
     override func viewDidLoad() {
-        
+        super.viewDidLoad()
     }
     
     @IBAction func Login(_ sender: Any) {
@@ -22,16 +24,31 @@ class LoginViewController: UIViewController {
         let passwordData = password.text
         
         if (emailData == "" || passwordData == "") {
+            error.text = "Please fill in all fields"
+            error.alpha = 1
             return
         }
-
+        
         validateLogin(emailData!, passwordData!)
     }
     
     func validateLogin(_ emailData: String, _ passwordData: String) {
-        if (emailData ==  "test@testing.nl" && passwordData == "test") {
-            let masterViewController = MasterViewController()
-            self.present(masterViewController, animated: true)
+        Auth.auth().signIn(withEmail: emailData, password: passwordData) { [weak self] (result, err) in
+            guard let strongSelf = self else { return }
+            
+            if (err == nil) {
+                strongSelf.error.alpha = 0
+                strongSelf.goToHome()
+            } else {
+                strongSelf.error.text = "Invalid email or password"
+                strongSelf.error.alpha = 1
+            }
         }
+    }
+    
+    func goToHome() {
+        let masterViewController = MasterViewController()
+        view.window?.rootViewController = masterViewController
+        view.window?.makeKeyAndVisible()
     }
 }
