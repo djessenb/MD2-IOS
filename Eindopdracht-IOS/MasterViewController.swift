@@ -17,11 +17,7 @@ class MasterViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let split = splitViewController {
-            let controllers = split.viewControllers
-            detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
-        }
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         pokemons = [];
         NetworkManager().fetchPokemons { (pokemons) in
             self.pokemons = pokemons
@@ -34,7 +30,6 @@ class MasterViewController: UITableViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
     }
     
@@ -47,7 +42,6 @@ class MasterViewController: UITableViewController {
                 let object = pokemons![indexPath.row] as Pokemon
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 controller.detailItem = object
-                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
         }
@@ -62,6 +56,15 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return pokemons!.count
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let object = pokemons![indexPath.row] as Pokemon
+        
+        if let viewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+            viewController.detailItem = object
+            navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
@@ -69,11 +72,6 @@ class MasterViewController: UITableViewController {
         let object = pokemons![indexPath.row]
         cell.textLabel!.text = object.name
         return cell
-    }
-
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
     }
 
 }
