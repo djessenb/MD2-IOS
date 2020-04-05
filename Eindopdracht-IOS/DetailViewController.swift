@@ -26,6 +26,10 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         configureView()
+        
+        if (detailDescriptionLabel.text == UserDefaults.standard.string(forKey: "favorite") ?? "No favorite") {
+            self.view.backgroundColor = UIColor.yellow
+        }
     }
 
     var detailItem: Pokemon? {
